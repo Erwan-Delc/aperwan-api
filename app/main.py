@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.api import produits
 from app.api import users
+from app.api import commandes
 from app.db.base import Base
 from app.db.session import engine
 
@@ -11,6 +12,7 @@ app = FastAPI(title="Aperwan API")
 # Inclusion des routes
 app.include_router(produits.router, prefix="")
 app.include_router(users.router)
+app.include_router(commandes.router)
 
 @app.get("/")
 def root():
