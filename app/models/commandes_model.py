@@ -10,6 +10,6 @@ class Commande(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     date_commande = Column(DateTime, default=datetime.utcnow)
     date_retrait = Column(DateTime)
-    statut = Column(Enum("en_attente", "prête", "retirée", "annulée", name="commande_statut"), default="en_attente")
+    statut = Column(Enum("en attente", "prête", "retirée", "annulée", name="commande_statut"), default="en_attente")
 
     utilisateur = relationship("User", back_populates="commandes")

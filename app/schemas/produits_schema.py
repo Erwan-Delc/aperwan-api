@@ -3,12 +3,13 @@ from typing import Optional
 
 class ProductBase(BaseModel):
     nom: str
-    type: str
     description: Optional[str] = None
     prix: float
     stock: int
     image_url: Optional[str] = None
     actif: bool
+    categorie_id: Optional[int] = None
+    sous_categorie_id: Optional[int] = None
 
 class ProductCreate(ProductBase):
     pass

@@ -1,8 +1,10 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class CommandeDetailBase(BaseModel):
     commande_id: int
-    produit_id: int
+    produit_id: Optional[int] = None
+    planche_id: Optional[int] = None
     quantité: int
     prix_unitaire: float
 
@@ -14,3 +16,4 @@ class CommandeDetail(CommandeDetailBase):
 
     class Config:
         from_attributes = True
+

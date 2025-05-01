@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from app.schemas.planches_schema import Planche, PlancheCreate
 from app.crud.planches_crud import get_all, get_by_id, create, delete
 from app.db.session import get_db
+from app.auth.auth_bearer import get_current_user
+from app.schemas.users_schema import User
 
 router = APIRouter()
 
@@ -18,11 +20,19 @@ def read_planche(planche_id: int, db: Session = Depends(get_db)):
     return planche
 
 @router.post("/planches", response_model=Planche, tags=["Planches"])
-def create_planche(planche: PlancheCreate, db: Session = Depends(get_db)):
+def create_planche(
+    planche: PlancheCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
     return create(db, planche)
 
 @router.delete("/planches/{planche_id}", tags=["Planches"])
-def delete_planche(planche_id: int, db: Session = Depends(get_db)):
+def delete_planche(
+    planche_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
     if not get_by_id(db, planche_id):
         raise HTTPException(status_code=404, detail="Planche non trouvée")
     delete(db, planche_id)

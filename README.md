@@ -11,6 +11,7 @@ API REST pour la gestion de l'application Aper'wan — un commerce de planches a
 
 ## 📁 Structure du projet
 
+```bash
 aperwan-api/ 
 ├── app/ 
 │   │ 
@@ -29,7 +30,7 @@ aperwan-api/
 │   └── main.py ← Point d'entrée FastAPI 
 ├── requirements.txt 
 └── README.md
-
+```
 
 ## 🚀 Lancement local
 

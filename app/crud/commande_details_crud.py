@@ -5,6 +5,9 @@ from app.schemas.commande_details_schema import CommandeDetailCreate
 def get_by_commande(db: Session, commande_id: int):
     return db.query(CommandeDetail).filter(CommandeDetail.commande_id == commande_id).all()
 
+def get_detail(db: Session, detail_id: int):
+    return db.query(CommandeDetail).filter(CommandeDetail.id == detail_id).first()
+
 def create_detail(db: Session, detail: CommandeDetailCreate):
     db_detail = CommandeDetail(**detail.dict())
     db.add(db_detail)
